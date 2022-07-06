@@ -32,7 +32,7 @@ Emp.prototype.CalcSal=function()
 Emp.prototype.RenderEmp=function()
 {
    document.write(this.EmployeeId  +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.FullName +` &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`
-  + this.Department +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Level+`&nbsp &nbsp &nbsp &nbs &nbsp &nbspp`+this.Salary+`</br>`);  
+  + this.Department +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Level+`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Salary+`</br>`);  
 }
 const Emp1000=new Emp(1000,"Ghazi Samer",	"Administration","Senior" ,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcJxa5bFhTfZRfWDp8gYOzQ7Ir-7MgprWLQw&usqp=CAU"	);
 const Emp1001=new Emp(1001,"Lana Ali",	"Finance",	"Senior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpZUjcMsPDlh_suSuzLLP-fwHU3cdx_jypHg&usqp=CAU");
