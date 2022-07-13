@@ -1,4 +1,47 @@
-'use stict';
+'use strict';
+
+
+let mainel=document.getElementsByTagName("main");
+
+//Administration
+let DivAdministration=document.createElement("div");
+DivAdministration.className="card";
+mainel[0].appendChild(DivAdministration);
+let HAdministration=document.createElement("h2");
+HAdministration.textContent="Administration";
+HAdministration.textAlign="center";
+DivAdministration.appendChild(HAdministration);
+
+//Finance
+let DivFinance=document.createElement("div");
+DivFinance.className="card";
+mainel[0].appendChild(DivFinance);
+let HFinance=document.createElement("h2");
+HFinance.textContent="Finance";
+HFinance.textAlign="center";
+DivFinance.appendChild(HFinance);
+
+//Marketing
+let DivMarketing=document.createElement("div");
+DivMarketing.className="card";
+mainel[0].appendChild(DivMarketing);
+let HMarketing=document.createElement("h2");
+HMarketing.textContent="Marketing";
+HMarketing.textAlign="center";
+DivMarketing.appendChild(HMarketing);
+
+//Development
+let DivDevelopment=document.createElement("div");
+DivDevelopment.className="card";
+mainel[0].appendChild(DivDevelopment);
+let HDevelopment=document.createElement("h2");
+HDevelopment.textContent="Development";
+HDevelopment.textAlign="center";
+DivDevelopment.appendChild(HDevelopment);
+
+
+
+
 const AllEmp=[];
 function Emp(EmployeeId,FullName,Department,Level,ImageURL)
 {
@@ -26,33 +69,93 @@ Emp.prototype.CalcSal=function()
             this.Salary=(1500+Math.floor(Math.random()*500));
             break;
     }
+    this.CalcNetSal();
 }
 
+Emp.prototype.CalcNetSal=function()
+{
+  this.NetSal=this.Salary-(this.Salary*0.075);
+}
 
 Emp.prototype.RenderEmp=function()
 {
-   document.write(this.EmployeeId  +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.FullName +` &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`
-  + this.Department +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Level+`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Salary+`</br>`);  
+  let EmpText="Name : "+this.FullName + " -ID: " +this.EmployeeId +'\n' +"Department: "+this.Department + " -Level: "+this.Level +'\n' + this.NetSal;
+  console.log(this);
+  if (this.Department=="Administration"){RenderAdministration(EmpText ,this.ImageURL);}
+  else if (this.Department=="Finance"){RenderFinance(EmpText,this.ImageURL);}
+  else if (this.Department=="Marketing"){RenderMarketing(EmpText,this.ImageURL);}
+  else if (this.Department=="Development"){RenderDevelopment(EmpText,this.ImageURL);}
+  //  document.write(this.EmployeeId  +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.FullName +` &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp` + this.Department +`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Level+`&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp`+this.Salary+`</br>`);  
 }
-const Emp1000=new Emp(1000,"Ghazi Samer",	"Administration","Senior" ,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcJxa5bFhTfZRfWDp8gYOzQ7Ir-7MgprWLQw&usqp=CAU"	);
-const Emp1001=new Emp(1001,"Lana Ali",	"Finance",	"Senior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpZUjcMsPDlh_suSuzLLP-fwHU3cdx_jypHg&usqp=CAU");
-const Emp1002=new Emp(1002,"Tamara Ayoub",	"Marketing",	"Senior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu4e9WSwmb2TTacfnr1JO1JRpWfOtrkm47PQ&usqp=CAU");
-const Emp1003=new Emp(1003,"Safi Walid",	"Administration",	"Mid-Senior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-FI5Evhx7ZBcj_PFrc9IOwTTVfdm1qNqcvQ&usqp=CAU");
-const Emp1004=new Emp(1004,	"Omar Zaid",	"Development","Senior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCiqBlvYpMS5qPsMBAik6q_HBZZkDj96LRwg&usqp=CAU");
-const Emp1005=new Emp(1005,	"Rana Saleh",	"Development",	"Junior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS674umpR1H27ljjkYompOIEXfNMK_BPTySZQ&usqp=CAU");
-const Emp1006=new Emp(1006,	"Hadi Ahmad",	"Finance",	"Mid-Senior","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPTQQawZ0zT1GV8k241qq7ZfafIylf8dyWoA&usqp=CAU");
-console.log(Emp1000);
-console.log(Emp1001);
-console.log(Emp1002);
-console.log(Emp1003);
-console.log(Emp1004);
-console.log(Emp1005);
-console.log(Emp1006);
+function RenderAdministration(EmpText,ImageURL)
+{
+  let ImgEl=document.createElement("img");
+ImgEl.src= ImageURL	;
+ImgEl.alt=ImageURL;
+let DivEl2=document.createElement("div");
+DivEl2.className="container";
+let EmpName =document.createElement("h4");
+EmpName.textContent=EmpText;
+ DivEl2.appendChild(EmpName);
+ DivAdministration.appendChild(ImgEl);
+ DivAdministration.appendChild(DivEl2);
+};
+
+
+function RenderFinance(EmpText,ImageURL)
+{
+  let ImgEl=document.createElement("img");
+ImgEl.src= ImageURL	;
+ImgEl.alt=ImageURL;
+let DivEl2=document.createElement("div");
+DivEl2.className="container";
+let EmpName =document.createElement("h4");
+EmpName.textContent=EmpText;
+ DivEl2.appendChild(EmpName);
+ DivFinance.appendChild(ImgEl);
+ DivFinance.appendChild(DivEl2);
+};
+
+
+function RenderMarketing(EmpText,ImageURL)
+{
+  let ImgEl=document.createElement("img");
+  ImgEl.src= ImageURL	;
+  ImgEl.alt=ImageURL;
+  let DivEl2=document.createElement("div");
+  DivEl2.className="container";
+  let EmpName =document.createElement("h4");
+  EmpName.textContent=EmpText;
+   DivEl2.appendChild(EmpName);
+   DivMarketing.appendChild(ImgEl);
+   DivMarketing.appendChild(DivEl2);
+};
+
+
+function RenderDevelopment(EmpText,ImageURL)
+{
+  let ImgEl=document.createElement("img");
+  ImgEl.src= ImageURL	;
+  ImgEl.alt=ImageURL;
+  let DivEl2=document.createElement("div");
+  DivEl2.className="container";
+  let EmpName =document.createElement("h4");
+  EmpName.textContent=EmpText;
+   DivEl2.appendChild(EmpName);
+   DivDevelopment.appendChild(ImgEl);
+   DivDevelopment.appendChild(DivEl2);
+};
+const Emp1000=new Emp(1000,"Ghazi Samer",	"Administration","Senior" ,"./assets/Ghazi.jpg"	);
+const Emp1001=new Emp(1001,"Lana Ali",	"Finance",	"Senior","./assets/Lana.jpg");
+const Emp1002=new Emp(1002,"Tamara Ayoub",	"Marketing",	"Senior","./assets/Tamara.jpg");
+const Emp1003=new Emp(1003,"Safi Walid",	"Administration",	"Mid-Senior","./assets/Safi.jpg");
+const Emp1004=new Emp(1004,	"Omar Zaid",	"Development","Senior","./assets/Omar.jpg");
+const Emp1005=new Emp(1005,	"Rana Saleh",	"Development",	"Junior","./assets/Rana.jpg");
+const Emp1006=new Emp(1006,	"Hadi Ahmad",	"Finance",	"Mid-Senior","./assets/Hadi.jpg");
+
 
 function PrintEmp(  Employee )
 {
-  document.write(`Employee Id &nbsp &nbsp  Employee Name &nbsp &nbsp Department &nbsp &nbsp  Level &nbsp &nbsp Net Salary </br>`)
-
   for(let i=0;i<Employee.length;i++)
   {
     Employee[i].RenderEmp();
@@ -60,3 +163,53 @@ function PrintEmp(  Employee )
 }
 
 PrintEmp(AllEmp);
+
+
+
+
+
+
+// let ImgEl=document.createElement("img");
+// ImgEl.src="./assets/Ghazi.jpg"	;
+// ImgEl.alt="Ghazi img";
+
+// let DivEl2=document.createElement("div");
+// DivEl2.className="container";
+// let EmpName =document.createElement("h4");
+
+// EmpName.textContent="Gazi";
+//  DivEl2.appendChild(EmpName);
+
+//  DivAdministration.appendChild(ImgEl);
+//  DivAdministration.appendChild(DivEl2);
+
+
+
+
+
+
+
+
+
+
+
+// let DivEl=document.createElement("div");
+// DivEl.className="card";
+
+
+// mainel[0].appendChild(DivEl);
+
+// let ImgEl=document.createElement("img");
+// ImgEl.src="./assets/Ghazi.jpg";
+// ImgEl.alt="Ghazi img";
+// // ImgEl.width="250";
+
+// let DivEl2=document.createElement("div");
+// DivEl2.className="container";
+// let EmpName =document.createElement("h4");
+
+// EmpName.innerHTML="Gazi";
+//  DivEl2.appendChild(EmpName);
+
+// DivEl.appendChild(ImgEl);
+// DivEl.appendChild(DivEl2);
